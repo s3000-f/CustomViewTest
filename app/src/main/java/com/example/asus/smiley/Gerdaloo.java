@@ -13,6 +13,7 @@ public class Gerdaloo extends RelativeLayout {
     private int size;
     EmotionalFaceView emotionalFaceView;
     InvCircle[] circles = new InvCircle[30];
+    float[] tetas = new float[30];
 
     public Gerdaloo(Context context) {
         super(context);
@@ -48,14 +49,33 @@ public class Gerdaloo extends RelativeLayout {
 //        Toast.makeText(getContext(), "Touched", Toast.LENGTH_SHORT).show();
         float x = event.getX();
         float y = event.getY();
-        float r = size*0.4f;
-        float ax = size*0.5f;
+        float r = size * 0.4f;
+        float ax = size * 0.5f;
+        int n = 30;
         float ay = ax;
-        float dis = (float)(Math.sqrt((x-ax)*(x-ax)+(y-ay)*(y-ay)));
-        float cx = ax + r*((x-ax)/dis);
-        float cy = ay + r*((y-ay)/dis);
+        float dis = (float) (Math.sqrt((x - ax) * (x - ax) + (y - ay) * (y - ay)));
+        float cx = ax + r * ((x - ax) / dis);
+        float cy = ay + r * ((y - ay) / dis);
 
-        circles[1].setAttrs(cx,cy,size*0.08f);
+        float cos = (ax - cx) / r;
+        float sin = (ay - cy) / r;
+        int state = 0;
+        float min = (sin - (float) Math.sin(tetas[0]))*(sin - (float) Math.sin(tetas[0])) + (cos- (float) Math.cos(tetas[0]))*(cos- (float) Math.cos(tetas[0]));
+        for (int i = 0; i < n; i++) {
+            float sinT = (float) Math.sin(tetas[i]);
+            float cosT = (float) Math.cos(tetas[i]);
+            float shit = (sin - sinT)*(sin - sinT) * (cos - cosT)*(cos - cosT);
+            if (min > shit) {
+                min = shit;
+                state = i;
+            }
+
+        }
+        float currentTeta = sin / cos;
+        Log.d(TAG, "onTouchEvent: " + state);
+
+
+        circles[1].setAttrs(cx, cy, size * 0.08f);
         circles[1].invalidate();
         return true;
     }
@@ -68,7 +88,6 @@ public class Gerdaloo extends RelativeLayout {
         addView(circles[1]);
         emotionalFaceView = new EmotionalFaceView(context, null);
         addView(emotionalFaceView);
-
         emotionalFaceView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 //        for (int i = 0; i < 30; i++) {
 //            circles[i] = new InvCircle(context, null, i);
@@ -79,6 +98,10 @@ public class Gerdaloo extends RelativeLayout {
 ////            circles[i].setOnClickListener();
 //        }
 //        Log.d(TAG, "init: here " + size);
+        for (int i = 0; i < 30; i++) {
+            tetas[i] = (float) (i * (2 * Math.PI / 30));
+
+        }
     }
 
     @Override
