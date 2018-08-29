@@ -70,6 +70,7 @@ public class Gerdaloo extends RelativeLayout {
         for (int i = 0; i < n; i++) {
             float sinT = (float) Math.sin(tetas[i]);
             float cosT = (float) Math.cos(tetas[i]);
+
             float shit = (sin - sinT)*(sin - sinT) * (cos - cosT)*(cos - cosT);
             if (min > shit) {
                 min = shit;
