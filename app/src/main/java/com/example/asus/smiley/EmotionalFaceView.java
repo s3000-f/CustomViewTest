@@ -36,20 +36,20 @@ public class EmotionalFaceView extends View {
     }
 
     private void drawShit(Canvas canvas) {
-        RectF oval = new RectF(0, 0, size, size);
-        RectF oval2 = new RectF(size * 0.1f, size * 0.1f, size * 0.9f, size * 0.9f);
+        RectF oval = new RectF(size*0.05f, size*0.05f, size*0.95f, size*0.95f);
+        RectF oval2 = new RectF(size * 0.15f, size * 0.15f, size * 0.85f, size * 0.85f);
         RectF cornerL = new RectF();
-        RectF oval3 = new RectF(size * 0.05f, size * 0.05f, size * 0.95f, size * 0.95f);
+        RectF oval3 = new RectF(size * 0.2f, size * 0.2f, size * 0.9f, size * 0.9f);
         shitPath.addArc(oval, 300, 300);
         shitPath.addArc(oval2, 300, 300);
 //        shitPath.addArc(oval3, 294, 350);
-        shitPath.addArc(cornerL, getSemicircle(size * 0.25f, size * 0.067f, size * (0.3f), size * (0.153f), cornerL, 0), 180);
+        shitPath.addArc(cornerL, getSemicircle(size * 0.274f, size * 0.111f, size * (0.325f), size * (0.197f), cornerL, 0), 180);
 //        shitPath.moveTo(size * 0.225f, size * 0.007f);
 //        shitPath.lineTo(size * 0.327f, size * 0.213f);
 //        shitPath.lineTo((float) (size * 0.5f + size * 0.45f * Math.cos(-Math.PI / 2 - Math.PI / 10)),
 //                (float) (size * 0.5f + size * 0.45f * Math.sin(-Math.PI / 2 - Math.PI / 10)));
 //        shitPath.lineTo(size * 0.225f, size * 0.007f);
-        shitPath.addArc(cornerL, getSemicircle(size * 0.75f, size * 0.067f, size * (0.7f), size * (0.153f), cornerL, 1), 180);
+        shitPath.addArc(cornerL, getSemicircle(size * 0.726f, size * 0.111f, size * (0.675f), size * (0.197f), cornerL, 1), 180);
 //        for (double i = Math.PI / 6 - Math.PI / 2; i < (2 * Math.PI - Math.PI / 6 - Math.PI / 2) - Math.PI / 18; i += Math.PI / 18) {
 //            float x = (float) (size * 0.5f + size * 0.45f * Math.cos(i));
 //            float y = (float) (size * 0.5f + size * 0.45f * Math.sin(i));

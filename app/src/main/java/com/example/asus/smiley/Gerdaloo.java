@@ -1,15 +1,12 @@
 package com.example.asus.smiley;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class Gerdaloo extends RelativeLayout {
     String TAG = "Smiley";
@@ -38,8 +35,8 @@ public class Gerdaloo extends RelativeLayout {
         float x = ev.getX();
         float y = ev.getY();
         float loc = (size * 0.5f - x) * (size * 0.5f - x) + (size * 0.5f - y) * (size * 0.5f - y);
-        float max = (size * 0.5f) * (size * 0.5f);
-        float min = (size * 0.4f) * (size * 0.4f);
+        float max = (size * 0.45f) * (size * 0.45f);
+        float min = (size * 0.35f) * (size * 0.35f);
         return loc >= min && loc <= max;
 
     }
@@ -51,7 +48,7 @@ public class Gerdaloo extends RelativeLayout {
 //        Toast.makeText(getContext(), "Touched", Toast.LENGTH_SHORT).show();
         float x = event.getX();
         float y = event.getY();
-        float r = size*0.45f;
+        float r = size*0.4f;
         float ax = size*0.5f;
         float ay = ax;
         float dis = (float)(Math.sqrt((x-ax)*(x-ax)+(y-ay)*(y-ay)));
@@ -88,8 +85,8 @@ public class Gerdaloo extends RelativeLayout {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         emotionalFaceView.setSize(size);
-        circles[0].setAttrs(size * 0.5f, size * 0.5f, size * 0.5f);
-        circles[1].setAttrs(size * 0.275f, size * 0.11f, size * 0.08f);
+        circles[0].setAttrs(size * 0.5f, size * 0.5f, size * 0.35f);
+        circles[1].setAttrs(size * 0.2995f, size * 0.154f, size * 0.08f);
         circles[1].setColor(Color.RED);
 //        int cnt = 0;
 //        for (double i = Math.PI / 6 - Math.PI / 2; i < (2 * Math.PI - Math.PI / 6 - Math.PI / 2) - Math.PI / 18; i += Math.PI / 18) {

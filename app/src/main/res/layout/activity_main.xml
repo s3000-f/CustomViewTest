@@ -16,7 +16,6 @@
 
     <com.example.asus.smiley.Gerdaloo
         android:id="@+id/gerdaloo"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView"
