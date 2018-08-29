@@ -14,10 +14,9 @@
         android:layout_centerHorizontal="true"
         android:text="Hello World!" />
 
-    <com.example.asus.smiley.EmotionalFaceView
-        android:id="@+id/emotionalFaceView"
+    <com.example.asus.smiley.Gerdaloo
+        android:id="@+id/gerdaloo"
         android:layout_margin="16dp"
-        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView"

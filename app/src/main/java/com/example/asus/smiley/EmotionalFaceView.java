@@ -41,25 +41,24 @@ public class EmotionalFaceView extends View {
         RectF oval3 = new RectF(size * 0.05f, size * 0.05f, size * 0.95f, size * 0.95f);
         shitPath.addArc(oval, 300, 300);
         shitPath.addArc(oval2, 300, 300);
-        shitPath.addArc(oval3, 294, 350);
-//        shitPath.addArc(cornerL, getSemicircle(size * 0.25f, size * 0.067f, size * (0.3f), size * (0.153f), cornerL, 0), 180);
-        shitPath.moveTo(size * 0.225f, size * 0.007f);
-        shitPath.lineTo(size * 0.327f, size * 0.213f);
-        shitPath.lineTo((float) (size * 0.5f + size * 0.45f * Math.cos(-Math.PI / 2 - Math.PI / 10)),
-                (float) (size * 0.5f + size * 0.45f * Math.sin(-Math.PI / 2 - Math.PI / 10)));
-        shitPath.lineTo(size * 0.225f, size * 0.007f);
+//        shitPath.addArc(oval3, 294, 350);
+        shitPath.addArc(cornerL, getSemicircle(size * 0.25f, size * 0.067f, size * (0.3f), size * (0.153f), cornerL, 0), 180);
+//        shitPath.moveTo(size * 0.225f, size * 0.007f);
+//        shitPath.lineTo(size * 0.327f, size * 0.213f);
+//        shitPath.lineTo((float) (size * 0.5f + size * 0.45f * Math.cos(-Math.PI / 2 - Math.PI / 10)),
+//                (float) (size * 0.5f + size * 0.45f * Math.sin(-Math.PI / 2 - Math.PI / 10)));
+//        shitPath.lineTo(size * 0.225f, size * 0.007f);
         shitPath.addArc(cornerL, getSemicircle(size * 0.75f, size * 0.067f, size * (0.7f), size * (0.153f), cornerL, 1), 180);
-        for (double i = Math.PI / 6 - Math.PI / 2; i < (2 * Math.PI - Math.PI / 6 - Math.PI / 2) - Math.PI / 18; i += Math.PI / 18) {
-            float x = (float) (size * 0.5f + size * 0.45f * Math.cos(i));
-            float y = (float) (size * 0.5f + size * 0.45f * Math.sin(i));
-            shitPath.addCircle(x, y, size * 0.05f, Path.Direction.CCW);
-            Log.d(TAG, "drawShit: " + x + " , " + y);
-        }
+//        for (double i = Math.PI / 6 - Math.PI / 2; i < (2 * Math.PI - Math.PI / 6 - Math.PI / 2) - Math.PI / 18; i += Math.PI / 18) {
+//            float x = (float) (size * 0.5f + size * 0.45f * Math.cos(i));
+//            float y = (float) (size * 0.5f + size * 0.45f * Math.sin(i));
+//            shitPath.addCircle(x, y, size * 0.05f, Path.Direction.CCW);
+//            Log.d(TAG, "drawShit: " + x + " , " + y);
+//        }
 
         paint.setColor(borderColor);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(borderWidth);
-
         canvas.drawPath(shitPath, paint);
     }
 
@@ -149,12 +148,7 @@ public class EmotionalFaceView extends View {
         super(context, attrs);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        size = Math.min(getMeasuredHeight(), getMeasuredWidth());
-        Log.d(TAG, "onMeasure: " + size);
-        // 2
-        setMeasuredDimension(size, size);
+    public void setSize(int size) {
+        this.size = size;
     }
 }
