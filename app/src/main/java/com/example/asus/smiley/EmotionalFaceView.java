@@ -39,7 +39,7 @@ public class EmotionalFaceView extends View {
         RectF oval = new RectF(size*0.05f, size*0.05f, size*0.95f, size*0.95f);
         RectF oval2 = new RectF(size * 0.15f, size * 0.15f, size * 0.85f, size * 0.85f);
         RectF cornerL = new RectF();
-        RectF oval3 = new RectF(size * 0.2f, size * 0.2f, size * 0.9f, size * 0.9f);
+        RectF oval3 = new RectF(size * 0.2f, size * 0.2f, size * 0.8f, size * 0.8f);
         shitPath.addArc(oval, 300, 300);
         shitPath.addArc(oval2, 300, 300);
 //        shitPath.addArc(oval3, 294, 350);

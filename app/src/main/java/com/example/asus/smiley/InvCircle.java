@@ -4,12 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+
 
 public class InvCircle extends View {
     int id;
@@ -34,14 +35,14 @@ public class InvCircle extends View {
         super.onDraw(canvas);
         Paint p = new Paint();
         p.setColor(color);
-        p.setStyle(Paint.Style.FILL_AND_STROKE);
+        p.setStyle(Paint.Style.FILL);
         Log.d(TAG, "onDraw: minicircles");
         canvas.drawCircle(x, y, r, p);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Toast.makeText(getContext(),"Circle",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),"Circle",Toast.LENGTH_SHORT).show();
         return true;
     }
 

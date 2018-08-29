@@ -1,11 +1,17 @@
 package com.example.asus.smiley;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.RectF;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.PathInterpolator;
 import android.widget.RelativeLayout;
 
 public class Gerdaloo extends RelativeLayout {
@@ -48,15 +54,28 @@ public class Gerdaloo extends RelativeLayout {
 //        Toast.makeText(getContext(), "Touched", Toast.LENGTH_SHORT).show();
         float x = event.getX();
         float y = event.getY();
-        float r = size*0.4f;
-        float ax = size*0.5f;
+        float r = size * 0.4f;
+        float ax = size * 0.5f;
         float ay = ax;
-        float dis = (float)(Math.sqrt((x-ax)*(x-ax)+(y-ay)*(y-ay)));
-        float cx = ax + r*((x-ax)/dis);
-        float cy = ay + r*((y-ay)/dis);
+        float dis = (float) (Math.sqrt((x - ax) * (x - ax) + (y - ay) * (y - ay)));
+        float cx = ax + r * ((x - ax) / dis);
+        float cy = ay + r * ((y - ay) / dis);
+        float xx = circles[1].x;
+        float yy = circles[1].y;
+        circles[1].setAttrs(cx, cy, size * 0.08f);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Path path = new Path();
 
-        circles[1].setAttrs(cx,cy,size*0.08f);
-        circles[1].invalidate();
+            RectF oval3 = new RectF( 0, 0, (size-xx), (size-yy));
+            Log.d(TAG, "onTouchEvent: "+size*0.2+" , "+x);
+//            path.addArc(oval3, 294, -340);
+            path.addRect(oval3, Path.Direction.CCW);
+//            path.arcTo(size * 0.2995f, size * 0.154f, size * 0.7005f, size * 0.8f, 300f, 300f, true);
+            ObjectAnimator animator = ObjectAnimator.ofFloat(circles[1], View.X, View.Y, path);
+            animator.setDuration(2000);
+            animator.start();
+        }
+//        circles[1].invalidate();
         return true;
     }
 
@@ -65,9 +84,9 @@ public class Gerdaloo extends RelativeLayout {
         circles[0] = new InvCircle(context, null, 1);
         circles[1] = new InvCircle(context, null, 2);
         addView(circles[0]);
-        addView(circles[1]);
         emotionalFaceView = new EmotionalFaceView(context, null);
         addView(emotionalFaceView);
+        addView(circles[1]);
 
         emotionalFaceView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 //        for (int i = 0; i < 30; i++) {
