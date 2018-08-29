@@ -13,6 +13,7 @@ import android.view.View;
 
 public class EmotionalFaceView extends View {
 
+
     String TAG = "Smiley";
 
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
